@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import state from "./redux/state";
+import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
-    <App dialogs={state.dialogs} messageData={state.messageData} messages={state.messages} />,
+   <BrowserRouter>
+      <App dialogs={state.dialogsPage.dialogs} messageData={state.profilePage.messageData}
+           messages={state.dialogsPage.messages} />
+   </BrowserRouter>,
   document.getElementById('root')
 );

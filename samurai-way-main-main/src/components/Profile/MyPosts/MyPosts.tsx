@@ -14,15 +14,22 @@ export type MessageDataType = {
 export const MyPosts = (props: MyPostsPropsType) => {
    const messageDataElements = props.messageData.map(md => <Post id={md.id} message={md.message} likeCount={md.likeCount}  />)
 
+   let newPostElement: any = React.createRef();
+
+   let addPost = () => {
+      let text = newPostElement.current.value;
+      alert(text);
+   }
+
    return (
       <div className={s.postsBlock}>
          <h3>My posts</h3>
          <div>
             <div>
-               <textarea></textarea>
+               <textarea ref={newPostElement}></textarea>
             </div>
             <div>
-               <button>Add post</button>
+               <button onClick={addPost}>Add post</button>
             </div>
          </div>
          <div className={s.posts}>

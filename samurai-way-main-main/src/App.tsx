@@ -10,7 +10,7 @@ import {Music} from "./components/Music/Music";
 import { Settings } from './components/Settings/Settings';
 import {MessageDataType} from "./components/Profile/MyPosts/MyPosts";
 
-type AppPropsType = {
+export type AppPropsType = {
    messageData: MessageDataType[]
    dialogs: DialogsType[]
    messages: MessageType[]

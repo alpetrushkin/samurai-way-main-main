@@ -4,6 +4,7 @@ import {Post} from "./Post/Post";
 
 export type MyPostsPropsType = {
    messageData: MessageDataType[]
+   addPost: (newMessage: any) => void
 }
 export type MessageDataType = {
    id: number
@@ -18,7 +19,7 @@ export const MyPosts = (props: MyPostsPropsType) => {
 
    let addPost = () => {
       let text = newPostElement.current.value;
-      alert(text);
+      props.addPost(text);
    }
 
    return (

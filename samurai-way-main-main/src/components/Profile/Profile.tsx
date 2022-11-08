@@ -5,7 +5,7 @@ import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
 type ProfilePropsType = {
    messageData: MessageDataType[]
-   addPost: (newMessage: any) => void
+   addPost: (text: string) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {

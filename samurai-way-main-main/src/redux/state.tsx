@@ -1,3 +1,5 @@
+import {renderEntireTree} from "../render";
+
 const state = {
    profilePage: {
       messageData: [
@@ -26,13 +28,41 @@ const state = {
    },
 }
 
-export let addPost = (newMessagePost: any) => {
+export type StateType = {
+   ProfilePage: ProfilePageType
+   DialogsPage: DialogsPageType
+}
+type ProfilePageType = {
+   messageData: MessageDataType[]
+}
+
+export type MessageDataType = {
+   id: number
+   message: string
+   likeCount: number
+}
+
+type DialogsPageType = {
+   dialogs: DialogsDataType[]
+   messages: MessagesPropsType[]
+}
+type DialogsDataType = {
+   id: number
+   name: string
+}
+type MessagesPropsType = {
+   id: number
+   message: string
+}
+
+export let addPost = (text: string) => {
    let newPost = {
       id: 4,
-      message: newMessagePost,
+      message: text,
       likeCount: 20
    };
-   state.profilePage.messageData.push(newMessagePost)
+   state.profilePage.messageData.push(newPost);
+   renderEntireTree(state)
 }
 
 export default state;

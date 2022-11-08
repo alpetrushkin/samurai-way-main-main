@@ -4,7 +4,7 @@ import {Post} from "./Post/Post";
 
 export type MyPostsPropsType = {
    messageData: MessageDataType[]
-   addPost: (newMessage: any) => void
+   addPost: (text: string) => void
 }
 export type MessageDataType = {
    id: number
@@ -15,11 +15,12 @@ export type MessageDataType = {
 export const MyPosts = (props: MyPostsPropsType) => {
    const messageDataElements = props.messageData.map(md => <Post id={md.id} message={md.message} likeCount={md.likeCount}  />)
 
-   let newPostElement: any = React.createRef();
+   let newPostElement: any = React.createRef<HTMLTextAreaElement>();
 
    let addPost = () => {
-      let text = newPostElement.current.value;
+      let text= newPostElement.current.value;
       props.addPost(text);
+      newPostElement.current.value = ''
    }
 
    return (

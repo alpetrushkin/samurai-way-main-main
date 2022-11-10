@@ -4,7 +4,9 @@ import {Post} from "./Post/Post";
 
 export type MyPostsPropsType = {
    messageData: MessageDataType[]
-   addPost: (text: string) => void
+   addPost: () => void
+   newPostText: string
+   updateNewPost: (newPostText: string) => void
 }
 export type MessageDataType = {
    id: number
@@ -18,9 +20,13 @@ export const MyPosts = (props: MyPostsPropsType) => {
    let newPostElement: any = React.createRef<HTMLTextAreaElement>();
 
    let addPost = () => {
+      props.addPost();
+      props.updateNewPost('')
+   }
+
+   const postOnChange = () => {
       let text= newPostElement.current.value;
-      props.addPost(text);
-      newPostElement.current.value = ''
+      props.updateNewPost(text);
    }
 
    return (
@@ -28,7 +34,11 @@ export const MyPosts = (props: MyPostsPropsType) => {
          <h3>My posts</h3>
          <div>
             <div>
-               <textarea ref={newPostElement}></textarea>
+               <textarea
+                  ref={newPostElement}
+                  value={props.newPostText}
+                  onChange={postOnChange}
+               />
             </div>
             <div>
                <button onClick={addPost}>Add post</button>

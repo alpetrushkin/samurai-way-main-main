@@ -5,7 +5,9 @@ import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
 type ProfilePropsType = {
    messageData: MessageDataType[]
-   addPost: (text: string) => void
+   addPost: () => void
+   newPostText: string
+   updateNewPost: (newPostText: string) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {
@@ -13,7 +15,11 @@ export const Profile = (props: ProfilePropsType) => {
    return (
       <div className={s.content}>
          <ProfileInfo />
-         <MyPosts messageData={props.messageData} addPost={props.addPost}/>
+         <MyPosts messageData={props.messageData}
+                  updateNewPost={props.updateNewPost}
+                  addPost={props.addPost}
+                  newPostText={props.newPostText}
+         />
       </div>
    );
 };

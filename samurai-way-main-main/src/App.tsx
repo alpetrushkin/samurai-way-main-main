@@ -14,7 +14,9 @@ export type AppPropsType = {
    messageData: MessageDataType[]
    dialogs: DialogsType[]
    messages: MessageType[]
-   addPost: (text: string) => void
+   addPost: () => void
+   newPostText: string
+   updateNewPost: (newPostText: string) => void
 }
 
 function App(props: AppPropsType) {
@@ -24,8 +26,14 @@ function App(props: AppPropsType) {
          <Header/>
          <Navbar/>
          <div className='app-wrapper-content'>
-            <Route path='/dialogs' render={() => <Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
-            <Route path='/profile' render={() => <Profile messageData={props.messageData} addPost={props.addPost}/>}/>
+            <Route path='/dialogs' render={() =>
+               <Dialogs dialogs={props.dialogs}
+                        messages={props.messages}/>}/>
+            <Route path='/profile' render={() =>
+               <Profile messageData={props.messageData}
+                        addPost={props.addPost}
+                        updateNewPost={props.updateNewPost}
+                        newPostText={props.newPostText}/>}/>
             <Route path='/news' render={() => <News/>}/>
             <Route path='/music' render={() => <Music/>}/>
             <Route path='/settings' render={() => <Settings/>}/>
